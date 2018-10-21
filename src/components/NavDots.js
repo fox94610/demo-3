@@ -8,12 +8,14 @@ const Button = styled('button')`
 	width: 10px;
 	height: 10px;
 	margin: 0 7px;
-	cursor: pointer;
 `
 
 const activeFill = css`
   background-color: white;
 `
+
+// BUTTON VERSION
+// <Button onClick={()=>this.props.slideStrip("jump", index)} className={ this.props.itemBlockVisible===index ? activeFill : "" } key={index}/>
 
 export default class NavDots extends Component {
 
@@ -21,7 +23,7 @@ export default class NavDots extends Component {
 		return (
 			<div>
 				{[...Array(this.props.numOfItemBlocks)].map((x, index) =>
-					<Button onClick={()=>this.props.slideStrip("jump", index)}className={ this.props.itemBlockVisible===index ? activeFill : "" } key={index}/>
+					<Button className={ this.props.itemBlockVisible===index ? activeFill : "" } key={index}/>
 				)}
 			</div>
 		)

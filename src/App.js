@@ -99,8 +99,7 @@ const hide = css`
 
 const numOfItemBlocks = 4
 const numItemsToDisplayAtATime = 4
-const totalItemsToRender = numOfItemBlocks * numItemsToDisplayAtATime;
-const userId = "116"
+const userId = "11"
 
 class App extends Component {
 
@@ -126,7 +125,7 @@ class App extends Component {
 
 	componentDidMount() {
   	if (this.state.items.length===0) {
-  		this.doFetch()
+  		this.doFetch({type:"getItems", amt:8})
   	}
   	// For strip animation
   	this.mainStrip = document.getElementsByClassName('main-strip')[0]
@@ -134,54 +133,54 @@ class App extends Component {
 
 	itemsFetchDataSuccess(items) {
 		if (this.reducedCollection.length > 0) {
+			// Handle "like" fetch
 			this.setState({ items: [...this.reducedCollection, ...items]})
 			this.reducedCollection = [] // Reset
 		} else {
+			// Regular get items fetch
 			const itemsCopy = [...this.state.items]
 			this.setState({ items: [...itemsCopy, ...items]})
 		}
 	}
 
-	itemsHasErrored(arg) {
-		console.log("ERRORED - "+arg)
+	itemsHasErrored(type) {
+		throw new Error('fetch error -- '+type)
 	}
 
 	userHasRatedSuccess(idOfFav) {
 		// Removed fav item from items
-		let itemCollection = [...this.state.items]
-		itemCollection.forEach((item, index) => {
+		this.reducedCollection = [...this.state.items]
+		this.reducedCollection.forEach((item, index) => {
 			if (item.id === idOfFav) {
-				itemCollection.splice(index, 1);
+				this.reducedCollection.splice(index, 1);
 			}
 		})
 
-		// If not enough left? Stash popped collection, will need after fetch
-		if (itemCollection.length < totalItemsToRender) {
-			this.reducedCollection = itemCollection
-			this.doFetch()
-		} else {
-			// There are enough items, use reduced collection
-			this.setState({ items: [...itemCollection] })
-		}
+		// Fetch one item, add to state after response
+		this.doFetch({type:"getItems", amt:1})
 	}
 
 
-	doFetch(arg, id) {
+	doFetch(options) {
 		let url, reqObj
-		if (arg==='like') {
-			url = 'http://54.191.197.111/users/'+userId+'/items/'+id
+		if (options.type === 'like') {
+			url = 'http://54.191.197.111/users/'+userId+'/items/'+options.itemId
 			reqObj = {
 				method: 'POST',
 				body: JSON.stringify({ rating: 'like' }),
 			}
-		} else if (arg==='dislike') {
-			// If was requirment for demo, this would be built out
+		} else if (options.type === 'dislike') {
+			// If requirment for demo, this would be built out
 			// Akin to 'like' would resolve to this.userHasRatedSuccess()
-		} else {
-			url = 'http://54.191.197.111/users/'+userId+'/items'+this.queryString
-			//console.log(url)
-			reqObj = {
-				method: 'GET'
+		} else if (options.type === 'getItems') {
+			if (options.amt) {
+				url = 'http://54.191.197.111/users/'+userId+'/items?amt='+options.amt+this.queryString
+				//console.log(url)
+				reqObj = {
+					method: 'GET'
+				}
+			} else {
+				throw new Error('"In "doFetch()" - type "getItems" requires "amt" value')
 			}
 		}
 
@@ -190,36 +189,39 @@ class App extends Component {
 				this.itemsHasErrored('Case 1')
 				throw Error(response.statusText)
 			}
-			return response;
+			return response
 		}).then((response) => response.json())
 		.then((data) => {
-			if (arg==='like') {
-				this.userHasRatedSuccess(id)
-			} else {
+			if (options.type==='like') {
+				this.userHasRatedSuccess(options.itemId)
+			} else if (options.type==='getItems') {
 				this.itemsFetchDataSuccess(data.items)
 			}
 		})
 		.catch(() => this.itemsHasErrored('Case 2'))
 	}
 
-	// arg - 'left' 'right' and 'jump'
+	// "dir" - 'left' 'right' and 'jump'
 	slideStrip(dir, index) {
 		const margin = 30
 		let itemBlockVisible = this.state.itemBlockVisible
-		if (dir==="jump") {
+
+		// Determined this functionality was not best for having most up to date favorites
+		/*if (dir==="jump") {
 			this.currentStripXPos = -(this.blockPositions[index]) - (index * margin)
 			TweenMax.to(this.mainStrip, 0.5, {x:this.currentStripXPos, ease:Power4.easeOut})
 			itemBlockVisible = index
+		} else {*/
+
+		if (dir==='right') {
+			this.currentStripXPos -= (990 + margin)
+			itemBlockVisible++
 		} else {
-			if (dir==='right') {
-				this.currentStripXPos -= (990 + margin)
-				itemBlockVisible++
-			} else {
-				this.currentStripXPos += (990 + margin)
-				itemBlockVisible--
-			}
-			TweenMax.to(this.mainStrip, 0.5, {x:this.currentStripXPos, ease:Power4.easeOut})
+			this.currentStripXPos += (990 + margin)
+			itemBlockVisible--
 		}
+
+		TweenMax.to(this.mainStrip, 0.5, {x:this.currentStripXPos, ease:Power4.easeOut})
 
 		this.setState({
 			itemBlockVisible: itemBlockVisible
@@ -227,14 +229,21 @@ class App extends Component {
 
 		//console.log(this.state.items.length)
 
-		// Not enough items? Get more
-		if (this.state.items.length < totalItemsToRender) {
-			this.doFetch()
+		if (dir==='right') {
+			// First page slide, get four more items preloaded for next right navigation
+			if (this.state.items.length === 8) {
+				this.doFetch({type:"getItems", amt:4})
+			}
+
+			// Second page slide, get four more items preloaded for next right navigation
+			if (this.state.items.length === 12) {
+				this.doFetch({type:"getItems", amt:4})
+			}
 		}
 	}
 
-	onItemFavorited(id) {
-  	this.doFetch("like", id)
+	onItemFavorited(itemId) {
+  	this.doFetch({type:"like", itemId:itemId})
 	}
 
 	updateQueryString() {
@@ -244,7 +253,7 @@ class App extends Component {
 					this.itemsIdArray.push(item.id)
 				}
 			})
-			this.queryString = "?"
+			this.queryString = "&"
 			this.itemsIdArray.forEach((id, index) => {
 				let join = index !== this.itemsIdArray.length-1 ? "&" : ""
 				this.queryString += ('seen=' + id + join)
@@ -256,6 +265,8 @@ class App extends Component {
 
   	// Prevent loading already loaded items
   	this.updateQueryString()
+
+  	//console.log("this.state.items.length = "+this.state.items.length)
 
     return (
       <div className="App">
