@@ -100,7 +100,7 @@ const hide = css`
 const numOfItemBlocks = 4
 const numItemsToDisplayAtATime = 4
 const totalItemsToRender = numOfItemBlocks * numItemsToDisplayAtATime;
-const userId = "115"
+const userId = "116"
 
 class App extends Component {
 
@@ -179,7 +179,7 @@ class App extends Component {
 			// Akin to 'like' would resolve to this.userHasRatedSuccess()
 		} else {
 			url = 'http://54.191.197.111/users/'+userId+'/items'+this.queryString
-			console.log(url)
+			//console.log(url)
 			reqObj = {
 				method: 'GET'
 			}
@@ -224,6 +224,8 @@ class App extends Component {
 		this.setState({
 			itemBlockVisible: itemBlockVisible
 		})
+
+		//console.log(this.state.items.length)
 
 		// Not enough items? Get more
 		if (this.state.items.length < totalItemsToRender) {
