@@ -1,0 +1,545 @@
+{
+    "items": [
+    {
+        "genres": [
+        {
+            "id": 1,
+            "name": "Drama"
+        }],
+        "name": "Fight Club",
+        "tags": [
+        {
+            "prettyName": "SupportGroup",
+            "id": 141419,
+            "name": "supportgroup"
+        },
+        {
+            "prettyName": "DualIdentity",
+            "id": 141699,
+            "name": "dualidentity"
+        },
+        {
+            "prettyName": "Nihilism",
+            "id": 23179,
+            "name": "nihilism"
+        },
+        {
+            "prettyName": "RageAndHate",
+            "id": 141978,
+            "name": "rageandhate"
+        },
+        {
+            "prettyName": "Insomnia",
+            "id": 23434,
+            "name": "insomnia"
+        }],
+        "text": "A ticking-time-bomb insomniac and a slippery soap salesman channel primal male aggression into a shocking new form of therapy. Their concept catches on, with underground \"fight clubs\" forming in every town, until an eccentric gets in the way and ignites an out-of-control spiral toward oblivion.",
+        "image": "https://static.h.ai/images/film/small/550.jpg",
+        "typeCode": 0,
+        "cover": "https://static.h.ai/images/film/original/550.jpg",
+        "definingInfo": "1999",
+        "trailers": [
+        {
+            "name": "HD Trailer",
+            "key": "qvCogW-N-HE",
+            "id": 572
+        },
+        {
+            "name": "Trailer 1",
+            "key": "SUXWAEX2jlg",
+            "id": 573
+        }],
+        "platforms": [
+        {
+            "url": "http://www.starz.com/movies/30206",
+            "id": 13,
+            "name": "STARZ"
+        }],
+        "type": "film",
+        "id": 852374
+    },
+    {
+        "genres": [
+        {
+            "id": 4,
+            "name": "Action"
+        },
+        {
+            "id": 7,
+            "name": "Adventure"
+        },
+        {
+            "id": 15,
+            "name": "Fantasy"
+        }],
+        "name": "Pirates of the Caribbean: The Curse of the Black Pearl",
+        "tags": [
+        {
+            "prettyName": "ExoticIsland",
+            "id": 141670,
+            "name": "exoticisland"
+        },
+        {
+            "prettyName": "Gold",
+            "id": 4572,
+            "name": "gold"
+        },
+        {
+            "prettyName": "MarriageProposal",
+            "id": 141671,
+            "name": "marriageproposal"
+        },
+        {
+            "prettyName": "Mutiny",
+            "id": 12704,
+            "name": "mutiny"
+        },
+        {
+            "prettyName": "Skeleton",
+            "id": 92960,
+            "name": "skeleton"
+        }],
+        "text": "Jack Sparrow, a freewheeling 17th-century pirate who roams the Caribbean Sea, butts heads with a rival pirate bent on pillaging the village of Port Royal. When the governor's daughter is kidnapped, Sparrow decides to help the girl's love save her. But their seafaring mission is hardly simple.",
+        "image": "https://static.h.ai/images/film/small/22.jpg",
+        "typeCode": 0,
+        "cover": "https://static.h.ai/images/film/original/22.jpg",
+        "definingInfo": "2003",
+        "trailers": [
+        {
+            "name": "Official Trailer 1",
+            "key": "NMH9QM0k6oE",
+            "id": 29
+        },
+        {
+            "name": "Official Trailer 1",
+            "key": "NMH9QM0k6oE",
+            "id": 131
+        }],
+        "platforms": [
+        {
+            "url": "http://netflix.com/title/60029157",
+            "id": 11,
+            "name": "Netflix"
+        }],
+        "type": "film",
+        "id": 851960
+    },
+    {
+        "name": "The Beatles",
+        "tags": [
+        {
+            "prettyName": "BritishInvasion",
+            "id": 515,
+            "name": "britishinvasion"
+        },
+        {
+            "prettyName": "ClassicRock",
+            "id": 12,
+            "name": "classicrock"
+        },
+        {
+            "prettyName": "Merseybeat",
+            "id": 400,
+            "name": "merseybeat"
+        },
+        {
+            "prettyName": "Protopunk",
+            "id": 516,
+            "name": "protopunk"
+        },
+        {
+            "prettyName": "PsychedelicRock",
+            "id": 96,
+            "name": "psychedelicrock"
+        }],
+        "text": "So much has been said and written about the Beatles -- and their story is so mythic in its sweep -- that it's difficult to summarize their career without restating clich\u00e9s that have already been digested by tens of millions of rock fans. To start with the obvious, they were the greatest and most inf",
+        "image": "https://i.scdn.co/image/934c57df9fbdbbaa5e93b55994a4cb9571fd2085",
+        "typeCode": 1,
+        "cover": "",
+        "definingInfo": "BritishInvasion",
+        "platforms": [
+        {
+            "url": "https://open.spotify.com/artist/3WrFJ7ztbogyGnTHbHJFl2",
+            "id": 3,
+            "name": "Spotify"
+        },
+        {
+            "url": "https://itunes.apple.com/artist/136975",
+            "id": 4,
+            "name": "iTunes"
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=khhXP1Yd7H0",
+            "id": 15,
+            "name": "Youtube"
+        }],
+        "type": "artist",
+        "id": 2164,
+        "youtubeVideos": [
+        {
+            "name": "The Beatles Greatest Hits Full HD | Best Of The Beatles Full Album 2017",
+            "key": "khhXP1Yd7H0",
+            "id": 1
+        },
+        {
+            "name": "The Beatles Greatest Hits (Live) | Best Songs Of The Beatles",
+            "key": "ocBdRO2qXIk",
+            "id": 2
+        },
+        {
+            "name": "The Beatles Greatest Hits Full HD | Best Of The Beatles Full Album 2017",
+            "key": "8AF81LQLRUc",
+            "id": 3
+        },
+        {
+            "name": "The Beatles - Don't Let Me Down",
+            "key": "NCtzkaL2t_Y",
+            "id": 4
+        },
+        {
+            "name": "The Beatles - Hey Jude",
+            "key": "A_MjCqQoLLA",
+            "id": 5
+        },
+        {
+            "name": "The Beatles - Strawberry Fields Forever (Restored HD Video)",
+            "key": "VzYBfJ2tXL8",
+            "id": 6
+        },
+        {
+            "name": "The Beatles - Hello, Goodbye",
+            "key": "rblYSKz_VnI",
+            "id": 7
+        },
+        {
+            "name": "The Beatles - I Want To Hold Your Hand - Performed Live On The Ed Sullivan Show 2/9/64",
+            "key": "jenWdylTtzs",
+            "id": 8
+        }]
+    },
+    {
+        "name": "LINKIN PARK",
+        "tags": [
+        {
+            "prettyName": "AlternativeMetal",
+            "id": 508,
+            "name": "alternativemetal"
+        },
+        {
+            "prettyName": "Numetal",
+            "id": 509,
+            "name": "numetal"
+        },
+        {
+            "prettyName": "PostGrunge",
+            "id": 498,
+            "name": "postgrunge"
+        },
+        {
+            "prettyName": "RapMetal",
+            "id": 43,
+            "name": "rapmetal"
+        },
+        {
+            "prettyName": "Rock",
+            "id": 16,
+            "name": "rock"
+        }],
+        "text": "Although rooted in alternative metal, Linkin Park became one of the most successful acts of the 2000s by welcoming elements of hip-hop, modern rock, and atmospheric electronica into their music. The band's rise was indebted to the aggressive rap-rock movement made popular by the likes of Korn and Li",
+        "image": "https://i.scdn.co/image/1685533969d5b68cbc630f991e873bd6467f1814",
+        "typeCode": 1,
+        "cover": "",
+        "definingInfo": "AlternativeMetal",
+        "platforms": [
+        {
+            "url": "https://open.spotify.com/artist/6XyY86QOPPrYVGvF9ch6wz",
+            "id": 3,
+            "name": "Spotify"
+        },
+        {
+            "url": "https://itunes.apple.com/artist/148662",
+            "id": 4,
+            "name": "iTunes"
+        },
+        {
+            "url": "https://www.youtube.com/watch?v=9VoLHdADma8",
+            "id": 15,
+            "name": "Youtube"
+        }],
+        "type": "artist",
+        "id": 72730,
+        "youtubeVideos": [
+        {
+            "name": "Linkin Park & Friends Celebrate Life in Honor of Chester Bennington - [LIVE from the Hollywood Bowl]",
+            "key": "9VoLHdADma8",
+            "id": 9
+        },
+        {
+            "name": "Linkin Park Best Songs (TOP 20)",
+            "key": "5_j84-ZRlOI",
+            "id": 10
+        },
+        {
+            "name": "Linkin Park - Meteora Full Album",
+            "key": "A7504lpRPEM",
+            "id": 11
+        },
+        {
+            "name": "Linkin Park - New Divide (Lyrics) - GetThemLyrics",
+            "key": "QnS09oQNexA",
+            "id": 12
+        },
+        {
+            "name": "Numb (Official Video) - Linkin Park",
+            "key": "kXYiU_JCYtU",
+            "id": 13
+        },
+        {
+            "name": "Invisible (Official Lyric Video) - Linkin Park",
+            "key": "n9_gWiwAWrA",
+            "id": 14
+        },
+        {
+            "name": "Heavy (Official Video) - Linkin Park (feat. Kiiara)",
+            "key": "5dmQ3QWpy1Q",
+            "id": 15
+        },
+        {
+            "name": "In The End (Official Video) - Linkin Park",
+            "key": "eVTXPUF4Oz4",
+            "id": 16
+        },
+        {
+            "name": "Good Goodbye (Official Video) - Linkin Park (feat. Pusha T and Stormzy)",
+            "key": "phVQZrb2AdA",
+            "id": 17
+        }]
+    },
+    {
+        "genres": [
+        {
+            "id": 4,
+            "name": "Action"
+        },
+        {
+            "id": 5,
+            "name": "Thriller"
+        },
+        {
+            "id": 7,
+            "name": "Adventure"
+        },
+        {
+            "id": 8,
+            "name": "Science Fiction"
+        },
+        {
+            "id": 14,
+            "name": "Mystery"
+        }],
+        "name": "Inception",
+        "tags": [
+        {
+            "prettyName": "LossOfLover",
+            "id": 141799,
+            "name": "lossoflover"
+        },
+        {
+            "prettyName": "Dream",
+            "id": 3163,
+            "name": "dream"
+        },
+        {
+            "prettyName": "Sleep",
+            "id": 1362,
+            "name": "sleep"
+        },
+        {
+            "prettyName": "Subconsciousness",
+            "id": 141926,
+            "name": "subconsciousness"
+        },
+        {
+            "prettyName": "Heist",
+            "id": 29906,
+            "name": "heist"
+        }],
+        "text": "Cobb, a skilled thief who commits corporate espionage by infiltrating the subconscious of his targets is offered a chance to regain his old life as payment for a task considered to be impossible: \"inception\", the implantation of another person's idea into a target's subconscious.",
+        "image": "https://static.h.ai/images/film/small/27205.jpg",
+        "typeCode": 0,
+        "cover": "https://static.h.ai/images/film/original/27205.jpg",
+        "definingInfo": "2010",
+        "trailers": [],
+        "platforms": [],
+        "type": "film",
+        "id": 868478
+    },
+    {
+        "genres": [
+        {
+            "id": 7,
+            "name": "Adventure"
+        },
+        {
+            "id": 8,
+            "name": "Science Fiction"
+        },
+        {
+            "id": 15,
+            "name": "Fantasy"
+        }],
+        "name": "The Hunger Games",
+        "tags": [
+        {
+            "prettyName": "Hallucination",
+            "id": 141961,
+            "name": "hallucination"
+        },
+        {
+            "prettyName": "Dystopia",
+            "id": 6625,
+            "name": "dystopia"
+        },
+        {
+            "prettyName": "FemaleProtagonist",
+            "id": 5589,
+            "name": "femaleprotagonist"
+        },
+        {
+            "prettyName": "BowAndArrow",
+            "id": 143129,
+            "name": "bowandarrow"
+        },
+        {
+            "prettyName": "KnifeThrowing",
+            "id": 142877,
+            "name": "knifethrowing"
+        }],
+        "text": "Every year in the ruins of what was once North America, the nation of Panem forces each of its twelve districts to send a teenage boy and girl to compete in the Hunger Games.  Part twisted entertainment, part government intimidation tactic, the Hunger Games are a nationally televised event in which ",
+        "image": "https://static.h.ai/images/film/small/70160.jpg",
+        "typeCode": 0,
+        "cover": "https://static.h.ai/images/film/original/70160.jpg",
+        "definingInfo": "2012",
+        "trailers": [],
+        "platforms": [],
+        "type": "film",
+        "id": 901929
+    },
+    {
+        "genres": [
+        {
+            "id": 5,
+            "name": "Sci-Fi & Fantasy"
+        }],
+        "name": "Game of Thrones",
+        "tags": [
+        {
+            "prettyName": "War",
+            "id": 2874,
+            "name": "war"
+        },
+        {
+            "prettyName": "Basedonnovel",
+            "id": 141656,
+            "name": "basedonnovel"
+        },
+        {
+            "prettyName": "Kingdom",
+            "id": 39388,
+            "name": "kingdom"
+        },
+        {
+            "prettyName": "Dragon",
+            "id": 34259,
+            "name": "dragon"
+        },
+        {
+            "prettyName": "King",
+            "id": 13689,
+            "name": "king"
+        }],
+        "text": "Seven noble families fight for control of the mythical land of Westeros. Friction between the houses leads to full-scale war. All while a very ancient evil awakens in the farthest north. Amidst the war, a neglected military order of misfits, the Night's Watch, is all that stands between the realms o",
+        "image": "https://image.tmdb.org/t/p/w342/jIhL6mlT7AblhbHJgEoiBIOUVl1.jpg",
+        "typeCode": 2,
+        "cover": "",
+        "definingInfo": "2011 - 2017",
+        "networks": [
+        {
+            "id": 822,
+            "name": "Sky Atlantic"
+        }],
+        "trailers": [
+        {
+            "id": 83,
+            "key": "BpJYNVhGf1s"
+        },
+        {
+            "id": 84,
+            "key": "qBPnMru-sb0"
+        },
+        {
+            "id": 85,
+            "key": "iGp_N3Ir7Do"
+        },
+        {
+            "id": 86,
+            "key": "s7L2PVdrb_8"
+        }],
+        "platforms": [],
+        "type": "tvshow",
+        "id": 1418523
+    },
+    {
+        "genres": [
+        {
+            "id": 2,
+            "name": "Crime"
+        },
+        {
+            "id": 5,
+            "name": "Thriller"
+        }],
+        "name": "Pulp Fiction",
+        "tags": [
+        {
+            "prettyName": "Transporter",
+            "id": 141709,
+            "name": "transporter"
+        },
+        {
+            "prettyName": "Brothel",
+            "id": 109033,
+            "name": "brothel"
+        },
+        {
+            "prettyName": "DrugDealer",
+            "id": 141158,
+            "name": "drugdealer"
+        },
+        {
+            "prettyName": "Boxer",
+            "id": 3610,
+            "name": "boxer"
+        },
+        {
+            "prettyName": "Massage",
+            "id": 8326,
+            "name": "massage"
+        }],
+        "text": "A burger-loving hit man, his philosophical partner, a drug-addled gangster's moll and a washed-up boxer converge in this sprawling, comedic crime caper. Their adventures unfurl in three stories that ingeniously trip back and forth in time.",
+        "image": "https://static.h.ai/images/film/small/680.jpg",
+        "typeCode": 0,
+        "cover": "https://static.h.ai/images/film/original/680.jpg",
+        "definingInfo": "1994",
+        "trailers": [],
+        "platforms": [
+        {
+            "url": "http://netflix.com/title/880640",
+            "id": 11,
+            "name": "Netflix"
+        }],
+        "type": "film",
+        "id": 852496
+    }],
+    "user": 1
+}
