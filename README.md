@@ -1,5 +1,5 @@
 # Live
-https://demo3.foxflare.com
+http://demo3.foxflare.com
 
 # Demonstrates
 Optimized to present most up to date recommendations, updated every favorite selection (heart icon button)  
