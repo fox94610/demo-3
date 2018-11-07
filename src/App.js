@@ -98,7 +98,6 @@ const hide = css`
 
 const numOfItemBlocks = 4
 const numItemsToDisplayAtATime = 4
-const userId = "265"
 
 class App extends Component {
 
@@ -110,15 +109,20 @@ class App extends Component {
 		}
 		this.itemsFetchDataSuccess = this.itemsFetchDataSuccess.bind(this)
 		this.userHasRatedSuccess = this.userHasRatedSuccess.bind(this)
-		this.itemsHasErrored = this.itemsHasErrored.bind(this)
 		this.onItemFavorited = this.onItemFavorited.bind(this)
 		this.updateQueryString = this.updateQueryString.bind(this)
 		this.slideStrip = this.slideStrip.bind(this)
-
-		// Merge these since similar?
 		this.itemsIdArray = []
 		this.queryString = ""
 		this.currentStripXPos = 0
+
+		const localStorageData = localStorage.getItem("recommendations-demo")
+		if (localStorageData) {
+			this.userId = localStorageData
+		} else {
+			this.userId = String(Math.floor(Math.random() * 1000))
+			localStorage.setItem("recommendations-demo", this.userId)
+		}
 
 		// Removed 'jump directly to' functionality
 		//this.blockPositions = [0, 990, 1980, 2970]
@@ -137,10 +141,6 @@ class App extends Component {
 		this.setState({ items: [...olditems, ...items]})
 	}
 
-	itemsHasErrored(type, info) {
-		throw Error('fetch error -- '+type + (info ? ' - '+info : ''))
-	}
-
 	userHasRatedSuccess(idOfFav) {
 		const oldItems = [...this.state.items]
 		const items = oldItems.filter((item) => item.id !== idOfFav)
@@ -152,7 +152,7 @@ class App extends Component {
 	doFetch(options) {
 		let url, reqObj
 		if (options.type === 'like') {
-			url = 'http://54.191.197.111/users/'+userId+'/items/'+options.itemId
+			url = 'http://54.191.197.111/users/'+this.userId+'/items/'+options.itemId
 			reqObj = {
 				method: 'POST',
 				body: JSON.stringify({ rating: 'like' }),
@@ -162,7 +162,7 @@ class App extends Component {
 			// Akin to 'like' would resolve to this.userHasRatedSuccess()
 		} else if (options.type === 'getItems') {
 			if (options.amt) {
-				url = 'http://54.191.197.111/users/'+userId+'/items?amt='+options.amt+this.queryString
+				url = 'http://54.191.197.111/users/'+this.userId+'/items?amt='+options.amt+this.queryString
 				reqObj = {
 					method: 'GET'
 				}
@@ -173,7 +173,7 @@ class App extends Component {
 
 		fetch(url, reqObj).then((response) => {
 			if (!response.ok) {
-				this.itemsHasErrored('Case 1', response.statusText)
+				console.log('Case 1', response.statusText)
 			}
 			return response
 		}).then((response) => response.json())
@@ -253,8 +253,8 @@ class App extends Component {
   	// Prevent loading already loaded items
   	this.updateQueryString()
 
-  	console.log('[...Array(numOfItemBlocks)]')
-  	console.log([...Array(numOfItemBlocks)])
+  	// console.log('[...Array(numOfItemBlocks)]')
+  	// console.log([...Array(numOfItemBlocks)])
 
     return (
       <div className="App">
