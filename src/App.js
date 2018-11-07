@@ -1,9 +1,8 @@
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import React, { Component } from 'react'
 import { Helmet } from 'react-helmet'
-import { injectGlobal } from 'emotion'
 import styled from 'react-emotion'
-import { css } from 'emotion'
+import { css, injectGlobal } from 'emotion'
 import MaterialIcon from 'material-icons-react'
 import { colors } from './components/ColorDefs'
 import { TweenMax, Power4 } from 'gsap'
@@ -17,7 +16,7 @@ injectGlobal`
 		margin: 0;
 	}
 	html {
-		margin: 0;
+   		margin: 0;
 		overflow-x: hidden;
 		overflow-y: hidden;
 	}
@@ -99,7 +98,7 @@ const hide = css`
 
 const numOfItemBlocks = 4
 const numItemsToDisplayAtATime = 4
-const userId = "11"
+const userId = "265"
 
 class App extends Component {
 
@@ -116,11 +115,13 @@ class App extends Component {
 		this.updateQueryString = this.updateQueryString.bind(this)
 		this.slideStrip = this.slideStrip.bind(this)
 
+		// Merge these since similar?
 		this.itemsIdArray = []
 		this.queryString = ""
 		this.currentStripXPos = 0
-		this.reducedCollection = []
-		this.blockPositions = [0, 990, 1980, 2970]
+
+		// Removed 'jump directly to' functionality
+		//this.blockPositions = [0, 990, 1980, 2970]
 	}
 
 	componentDidMount() {
@@ -132,31 +133,18 @@ class App extends Component {
 	}
 
 	itemsFetchDataSuccess(items) {
-		if (this.reducedCollection.length > 0) {
-			// Handle "like" fetch
-			this.setState({ items: [...this.reducedCollection, ...items]})
-			this.reducedCollection = [] // Reset
-		} else {
-			// Regular get items fetch
-			const itemsCopy = [...this.state.items]
-			this.setState({ items: [...itemsCopy, ...items]})
-		}
+		const olditems = [...this.state.items]
+		this.setState({ items: [...olditems, ...items]})
 	}
 
-	itemsHasErrored(type) {
-		throw new Error('fetch error -- '+type)
+	itemsHasErrored(type, info) {
+		throw Error('fetch error -- '+type + (info ? ' - '+info : ''))
 	}
 
 	userHasRatedSuccess(idOfFav) {
-		// Removed fav item from items
-		this.reducedCollection = [...this.state.items]
-		this.reducedCollection.forEach((item, index) => {
-			if (item.id === idOfFav) {
-				this.reducedCollection.splice(index, 1);
-			}
-		})
-
-		// Fetch one item, add to state after response
+		const oldItems = [...this.state.items]
+		const items = oldItems.filter((item) => item.id !== idOfFav)
+		this.setState({items})
 		this.doFetch({type:"getItems", amt:1})
 	}
 
@@ -175,19 +163,17 @@ class App extends Component {
 		} else if (options.type === 'getItems') {
 			if (options.amt) {
 				url = 'http://54.191.197.111/users/'+userId+'/items?amt='+options.amt+this.queryString
-				//console.log(url)
 				reqObj = {
 					method: 'GET'
 				}
 			} else {
-				throw new Error('"In "doFetch()" - type "getItems" requires "amt" value')
+				throw Error('"In "doFetch()" - type "getItems" requires "amt" value')
 			}
 		}
 
 		fetch(url, reqObj).then((response) => {
 			if (!response.ok) {
-				this.itemsHasErrored('Case 1')
-				throw Error(response.statusText)
+				this.itemsHasErrored('Case 1', response.statusText)
 			}
 			return response
 		}).then((response) => response.json())
@@ -198,7 +184,9 @@ class App extends Component {
 				this.itemsFetchDataSuccess(data.items)
 			}
 		})
-		.catch(() => this.itemsHasErrored('Case 2'))
+		.catch(err => {
+			console.log("Error - Case 2")
+		})
 	}
 
 	// "dir" - 'left' 'right' and 'jump'
@@ -206,7 +194,7 @@ class App extends Component {
 		const margin = 30
 		let itemBlockVisible = this.state.itemBlockVisible
 
-		// Determined this functionality was not best for having most up to date favorites
+		// Determined this jump directly to functionality was not best for having most up to date favorites
 		/*if (dir==="jump") {
 			this.currentStripXPos = -(this.blockPositions[index]) - (index * margin)
 			TweenMax.to(this.mainStrip, 0.5, {x:this.currentStripXPos, ease:Power4.easeOut})
@@ -227,8 +215,7 @@ class App extends Component {
 			itemBlockVisible: itemBlockVisible
 		})
 
-		//console.log(this.state.items.length)
-
+		// Incrementally add new items on slide
 		if (dir==='right') {
 			// First page slide, get four more items preloaded for next right navigation
 			if (this.state.items.length === 8) {
@@ -266,18 +253,18 @@ class App extends Component {
   	// Prevent loading already loaded items
   	this.updateQueryString()
 
-  	//console.log("this.state.items.length = "+this.state.items.length)
+  	console.log('[...Array(numOfItemBlocks)]')
+  	console.log([...Array(numOfItemBlocks)])
 
     return (
       <div className="App">
 				<Helmet>
 					<meta charSet="utf-8" />
-					<title>Recommendations - Crossing Minds</title>
+					<title>Recommendations Engine</title>
 				</Helmet>
 	      <div className="container">
 	      	<div className="row">
 	      		<MainCol className="col">
-
 	      			<MainContainer>
 
 		      			<ArrowCol onClick={()=>this.slideStrip('left')} className={this.state.itemBlockVisible===0 ? hide : ""}>
@@ -314,7 +301,6 @@ class App extends Component {
 		      			</ArrowCol>
 
 	      			</MainContainer>
-
 	      		</MainCol>
 	      	</div>
 	      </div>
