@@ -149,11 +149,7 @@ class App extends Component {
   doFetch(options) {
     let url, reqObj;
     if (options.type === 'like') {
-      url =
-        'http://54.191.197.111/users/' +
-        this.userId +
-        '/items/' +
-        options.itemId;
+      url = `http://54.191.197.111/users/${this.userId}/items/${options.itemId}`;
       reqObj = {
         method: 'POST',
         body: JSON.stringify({ rating: 'like' }),
@@ -164,11 +160,7 @@ class App extends Component {
     } else if (options.type === 'getItems') {
       if (options.amt) {
         url =
-          'http://54.191.197.111/users/' +
-          this.userId +
-          '/items?amt=' +
-          options.amt +
-          this.queryString;
+          `http://54.191.197.111/users/${this.userId}/items?amt=${options.amt + this.queryString}`;
         reqObj = {
           method: 'GET',
         };
@@ -261,11 +253,9 @@ class App extends Component {
 
   render() {
     // Prevent loading already loaded items
+    // TODO move this out of render
+    // TODO move data to a state prop
     this.updateQueryString();
-
-    // console.log('[...Array(numOfItemBlocks)]')
-    // console.log([...Array(numOfItemBlocks)])
-
     return (
       <div className="App">
         <Helmet>
